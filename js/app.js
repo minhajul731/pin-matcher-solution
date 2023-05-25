@@ -16,7 +16,7 @@ function getGeneratedPin() {
     document.getElementById('display-pin').value = generatePin;
 }
 
-// keypad catch from website
+// keypad catch from website and display
 document.getElementById('key-pad').addEventListener('click', function (event) {
     const number = event.target.innerText;
     const displayNumber = document.getElementById('display-number');
@@ -30,4 +30,20 @@ document.getElementById('key-pad').addEventListener('click', function (event) {
         const presentNumber = previousNumber + number;
         displayNumber.value = presentNumber;
     }
-})
+});
+
+// match pin
+function verifyPin() {
+    const generatePin = document.getElementById('display-pin').value;
+    const typedNumber = document.getElementById('display-number').value;
+    const varifyFail = document.getElementById('match-fail');
+    const varifySuccess = document.getElementById('match-success');
+    if (generatePin == typedNumber) {
+        varifySuccess.style.display = 'block';
+        varifyFail.style.display = 'none';
+    }
+    else {
+        varifySuccess.style.display = 'none';
+        varifyFail.style.display = 'block';
+    }
+}
