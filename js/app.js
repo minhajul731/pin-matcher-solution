@@ -15,3 +15,19 @@ function getGeneratedPin() {
     const generatePin = getPin();
     document.getElementById('display-pin').value = generatePin;
 }
+
+// keypad catch from website
+document.getElementById('key-pad').addEventListener('click', function (event) {
+    const number = event.target.innerText;
+    const displayNumber = document.getElementById('display-number');
+    if (isNaN(number)) {
+        if (number == 'C') {
+            displayNumber.value = '';
+        }
+    }
+    else {
+        const previousNumber = displayNumber.value;
+        const presentNumber = previousNumber + number;
+        displayNumber.value = presentNumber;
+    }
+})
